@@ -5,7 +5,7 @@ Lead capture, AI admissions chatbot, lead scoring, follow-up and payments ledger
 ## What it does
 - Campaign landing pages with a lead form and a chatbot.
 - Chatbot answers only from the approved knowledge file and captures leads with consent.
-- Automatic lead scoring (n8n workflow) and hot-lead alerts.
+- Automatic lead scoring and hot-lead alerts run inside the app.
 - Owner console: dashboard, leads (status, notes, follow-up), payments ledger (PKR and USD kept separate, CSV export).
 
 ## Setup
