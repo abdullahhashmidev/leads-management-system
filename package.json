@@ -1,0 +1,44 @@
+{
+  "name": "leads-management-system",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "doctor": "node --env-file=.env.local scripts/doctor.mjs",
+    "smoke": "node --env-file=.env.local scripts/smoke.mjs",
+    "review": "node --env-file=.env.local scripts/review-pack.mjs",
+    "check": "npm run typecheck && npm run lint && npm run smoke",
+    "leads": "node --env-file=.env.local scripts/leads.mjs",
+    "doctor:static": "node --env-file=.env.local scripts/doctor.mjs --static",
+    "seed": "node --env-file=.env.local scripts/seed.mjs",
+    "up": "bash scripts/up.sh",
+    "down": "bash scripts/down.sh",
+    "e2e:form": "node --env-file=.env.local scripts/e2e-form.mjs",
+    "clean:test": "node --env-file=.env.local scripts/clean-test-leads.mjs",
+    "reload": "bash scripts/reload.sh",
+    "e2e:card": "node --env-file=.env.local scripts/e2e-chatcard.mjs",
+    "link": "bash scripts/link.sh"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.109.0",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

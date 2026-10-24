@@ -1,0 +1,10 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { "name": "Next.js: server", "type": "node-terminal", "request": "launch", "command": "npm run dev" },
+    { "name": "Next.js: Chrome", "type": "chrome", "request": "launch", "url": "http://localhost:3000" }
+  ],
+  "compounds": [
+    { "name": "Full stack debug", "configurations": ["Next.js: server", "Next.js: Chrome"] }
+  ]
+}

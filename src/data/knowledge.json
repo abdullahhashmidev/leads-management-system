@@ -1,0 +1,26 @@
+{
+  "summer_camp": {
+    "name": "AI Summer Camp (Onsite)",
+    "mode": "Onsite, Karachi",
+    "audience": "School/college/university students and parents",
+    "courses": ["AI Content Creation","Digital Marketing","Graphic Design","Video Editing","AI Tools","Coding Basics"],
+    "fee": "DUMMY: PKR 6,000 per month, special discount for kids",
+    "timing": "DUMMY: Mon-Fri, 10am-12pm, 6 weeks",
+    "faqs": [
+      {"q":"Beginner bachon ke liye hai?","a":"Ji haan, course beginner friendly hai."},
+      {"q":"Certificate milega?","a":"Ji haan, course mukammal karne par certificate milega."}
+    ]
+  },
+  "accl": {
+    "name": "Online AI Courses (Live Classes)",
+    "mode": "Online live classes on Zoom",
+    "audience": "Students, professionals, entrepreneurs, anyone, international students welcome",
+    "courses": ["AI Tools and Digital Skills","Canva and Graphic Design","Video Editing","Coding Basics","Content Creation","AI Tools Practical Use","Digital Marketing","AI Teachers Training"],
+    "fee": "USD 100 admission fee + USD 100 monthly fee",
+    "timing": "DUMMY: 3 classes per week, evening PKT",
+    "faqs": [
+      {"q":"Classes kahan hoti hain?","a":"Zoom par live classes hoti hain."},
+      {"q":"Certificate?","a":"Certificate of completion milta hai."}
+    ]
+  }
+}
