@@ -50,3 +50,6 @@ n8n/backup/
 .env.local.bak
 .tools/
 tsconfig.tsbuildinfo
+
+# local tooling
+.postqode/

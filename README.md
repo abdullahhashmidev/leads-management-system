@@ -1,25 +1,63 @@
 # Leads Management System
 
-Lead capture, AI admissions chatbot, lead scoring, follow-up and payments ledger for education businesses.
+[![ci](https://github.com/abdullahhashmidev/leads-management-system/actions/workflows/ci.yml/badge.svg)](https://github.com/abdullahhashmidev/leads-management-system/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## What it does
-- Campaign landing pages with a lead form and a chatbot.
-- Chatbot answers only from the approved knowledge file and captures leads with consent.
-- Automatic lead scoring and hot-lead alerts run inside the app.
-- Owner console: dashboard, leads (status, notes, follow-up), payments ledger (PKR and USD kept separate, CSV export).
+Lead capture, AI admissions chatbot, lead scoring, follow-up and a payments ledger for education businesses.
 
-## Setup
-1. `npm install`
-2. Copy `.env.example` to `.env.local` and fill every value.
-3. Apply `supabase/schema.sql` to a new Supabase project.
-4. `npm run dev` (development) or `npm run build && npm start` (production-like).
-5. Demo data only: `npm run seed`.
+## Features
+- **Campaign landing pages** with a lead form and a chatbot.
+- **Grounded chatbot.** Answers only from an approved knowledge file. It captures contact details only after the visitor gives consent in a separate step.
+- **Lead scoring.** Each lead gets a 0–100 score and a hot, warm or cold tag. Hot leads trigger a push alert.
+- **Owner console.** Dashboard, lead pipeline (status, notes, follow-up) and a payments ledger. PKR and USD are kept separate, with receipt numbers and CSV export.
+
+## Tech stack
+TypeScript · Next.js (App Router) · React · Supabase (Postgres, row-level security) · Zod · Tailwind CSS · OpenAI-compatible LLM API
+
+## Security model
+- Row-level security is on for every table, with no public policies. Only the server holds the service role key.
+- Admin access uses a signed, httpOnly session cookie. The password is compared in constant time.
+- Rate limits and the LLM spend cap are kept in Postgres, so they work across every serverless instance.
+- The chatbot has a kill switch: `update app_settings set value = 'false' where key = 'chat_enabled';`
+- Lead data is private. No public read endpoint exists.
+
+Report a vulnerability through [SECURITY.md](SECURITY.md).
+
+## Getting started
+```bash
+npm ci
+cp .env.example .env.local   # fill every value
+```
+Apply `supabase/schema.sql` to a new Supabase project, then:
+```bash
+npm run dev                  # development
+npm run build && npm start   # production-like
+npm run seed                 # optional demo data (is_dummy = true)
+```
 
 ## Checks
-- `npm run doctor` runs structure, env, secrets and dependency checks.
-- `npm run smoke` runs API smoke tests.
+| Command | What it does |
+| --- | --- |
+| `npm run typecheck` | TypeScript strict check |
+| `npm run lint` | ESLint |
+| `npm run doctor` | Structure, env, secrets and dependency checks (needs `.env.local`) |
+| `npm run doctor:static` | Same checks without network access |
+| `npm run smoke` | API smoke tests against a running app |
 
-## Security notes
-- Admin access needs `SESSION_SECRET` (32+ chars) and `ADMIN_PASSWORD`. Rate limits and the chatbot budget live in the `usage_counters` table (see `supabase/schema.sql`). The chatbot kill switch is `app_settings.chat_enabled`.
-- Service role key lives only on the server. Never put it in `NEXT_PUBLIC_*`.
-- Lead data is private: no public read endpoint exists.
+CI runs typecheck, lint, build, `npm audit` and secret scanning on every push and pull request.
+
+## Project structure
+```
+src/app/           routes: landing pages, admin console, API routes
+src/components/    lead form and chat widget
+src/lib/           env validation, guards, rate limits, scoring, Supabase client
+src/data/          approved chatbot knowledge file
+supabase/          schema and migrations
+scripts/           seed, doctor, smoke and e2e scripts
+```
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+MIT. See [LICENSE](LICENSE).
